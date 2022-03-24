@@ -24,7 +24,7 @@
 extern "C" {
 #endif
 
-extern int   serialOpen      (const char *device, const int baud) ;
+extern int   serialOpen      (const char *device, const int baud, const unsigned char vmin, const unsigned char vtime ) ;
 extern void  serialClose     (const int fd) ;
 extern void  serialFlush     (const int fd) ;
 extern void  serialPutchar   (const int fd, const unsigned char c) ;

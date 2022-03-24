@@ -41,7 +41,7 @@
  *********************************************************************************
  */
 
-int serialOpen (const char *device, const int baud)
+int serialOpen (const char *device, const int baud, const unsigned char vmin, const unsigned char vtime )
 {
   struct termios options ;
   speed_t myBaud ;
@@ -105,8 +105,8 @@ int serialOpen (const char *device, const int baud)
     options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG) ;
     options.c_oflag &= ~OPOST ;
 
-    options.c_cc [VMIN]  =   0 ;
-    options.c_cc [VTIME] = 100 ;	// Ten seconds (100 deciseconds)
+    options.c_cc [VMIN]  = vmin ;
+    options.c_cc [VTIME] = vtime ;
 
   tcsetattr (fd, TCSANOW, &options) ;
 

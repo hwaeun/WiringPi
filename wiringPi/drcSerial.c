@@ -150,7 +150,7 @@ int drcSetupSerial (const int pinBase, const int numPins, const char *device, co
   time_t then ;
   struct wiringPiNodeStruct *node ;
 
-  if ((fd = serialOpen (device, baud)) < 0)
+  if ((fd = serialOpen (device, baud, 1, 1)) < 0)
     return FALSE ;
 
   delay (10) ;	// May need longer if it's an Uno that reboots on the open...
